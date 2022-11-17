@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { login } from '../../../store/actions/authAction'
-
+import {useCookies} from 'react-cookie'
 function FormComponent({sup}) {
   const auth=useSelector(state=>state.auth)
   const dispatch=useDispatch()

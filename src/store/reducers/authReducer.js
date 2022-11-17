@@ -4,6 +4,7 @@ const initialState={
     auth:false,
     username:null,
     email:null,
+    avatarUrl:null
 }
 export default function authReducer(state=initialState,action){
     switch(action.type){
@@ -12,14 +13,16 @@ export default function authReducer(state=initialState,action){
                 ...state,
                 auth:true,
                 username:action.payload.username,
-                eamil:action.payload.email
+                email:action.payload.email,
+                avatarUrl:action.payload.avatarUrl
             }
         case LOGOUT:
             return {
                 ...state,
                 auth:false,
                 username:null,
-                email:null
+                email:null,
+                avatarUrl:null
             }
         default:
         return state

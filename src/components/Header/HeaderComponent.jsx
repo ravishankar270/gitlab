@@ -22,9 +22,10 @@ import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/actions/authAction';
 import { useNavigate } from 'react-router-dom';
+import {useCookies} from 'react-cookie'
 
 const drawerWidth = 240;
 const openedMixin = (theme) => ({
@@ -94,8 +95,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function HeaderComponent({children}) {
   const theme = useTheme();
+  const [cookies,setCookies,removeCookie]=useCookies(['token'])
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const [userImg,setUserImg]=React.useState(localStorage.getItem('img'))
   const dispatch=useDispatch()
   const naviagte=useNavigate()
   const handleDrawerOpen = () => {
@@ -110,12 +113,18 @@ export default function HeaderComponent({children}) {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu1 = () => {
     localStorage.clear()
     dispatch(logout())
+    removeCookie('token')
     naviagte('/login')
-    setAnchorElUser(null);
+
   };
+  const handleCloseUserMenu=()=>{
+    setAnchorElUser(null)
+  }
+
+  
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -143,7 +152,7 @@ export default function HeaderComponent({children}) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src={userImg} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -162,8 +171,8 @@ export default function HeaderComponent({children}) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Logout</Typography>
+                <MenuItem >
+                  <Typography onClick={handleCloseUserMenu1} textAlign="center">Logout</Typography>
                 </MenuItem>
               
             </Menu>
@@ -178,7 +187,7 @@ export default function HeaderComponent({children}) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Inbox'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -202,30 +211,7 @@ export default function HeaderComponent({children}) {
           ))}
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
