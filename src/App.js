@@ -1,6 +1,10 @@
 import "./App.css";
 import "./index.css";
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 import HeaderComponent from "./components/Header/HeaderComponent";
 import LoginPage from "./Pages/Login/LoginPage";
 import IssuePage from "./Pages/Issue/IssuePage";
@@ -8,25 +12,6 @@ import { useSelector } from "react-redux";
 import Protected from "./Utilities/Protected";
 import IssueDetail from "./Pages/IssueDetail/IssueDetail";
 import NewIssuePage from "./Pages/NewIssue/NewIssuePage";
-import axios from 'axios';
-
-// axios.interceptors.request.use(
-//   (req) => {
-//      // Add configurations here
-//     //  if(!Cookies.get('token')){
-//     //     return <Navigate to='/login'/> 
-//     //  }
-//      console.log(req.headers)
-//      if(Cookies.get('token')){
-//      req.headers={
-//       ...req.headers,
-//       'Authorization': Cookies.get('token')
-//     }
-//   }
-//     console.log(req)
-//     return req;
-//   }
-// );
 
 function App() {
   const token = localStorage.getItem("token");
@@ -47,11 +32,7 @@ function App() {
               </Protected>
             }
           ></Route>
-          <Route
-            exact
-            path="/login"
-            element={<LoginPage auth={auth} />}
-          ></Route>
+          <Route exact path="/login" element={<LoginPage />}></Route>
           <Route exact path="/issue" element={<IssuePage />}></Route>
           <Route
             exact

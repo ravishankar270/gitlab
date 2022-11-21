@@ -46,7 +46,7 @@ export default function IssueComponent({
           <p className="text-muted" style={{fontSize:'12px'}}>{weight}</p>
           </div>
           {labels.map((label) => {
-            return <LabelComponent type={label.title} color={label.color} />;
+            return <LabelComponent key={label.id} type={label.title} color={label.color} />;
           })}
         </div>
       </div>

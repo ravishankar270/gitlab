@@ -1,5 +1,5 @@
-import axios from "axios";
+import axioInstance from "./AxioInstance";
 
 export function requestGetUser() {
-  return axios.get("http://localhost:3001/user_info")
+  return axioInstance.get("user_info")
 }

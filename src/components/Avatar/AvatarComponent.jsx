@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 function AvatarComponent({img,width,height}) {
-    useEffect(()=>{
-        console.log(img)
-    },[])
+   
   return (
     <div>
         <img  className='rounded-circle'alt='image' width={width} height={height} src={img}></img>

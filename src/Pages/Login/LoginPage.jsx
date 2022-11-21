@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FormComponent from "../../components/shared/Form/FormComponent";
-import "./LoginPage.css";
-function LoginPage({ auth }) {
+import "./LoginPage.scss";
+function LoginPage() {
   return (
     <>
       <img

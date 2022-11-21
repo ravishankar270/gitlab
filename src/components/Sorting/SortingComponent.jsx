@@ -22,7 +22,6 @@ export default function SortingComponent({issuesData,setIssuesData,updateIssues}
       );
 
     }
-    console.log(sortedArr)
     // setIssuesData(sortedArr)
     updateIssues(sortedArr)
     setDate(event.target.value);

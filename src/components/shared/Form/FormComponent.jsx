@@ -14,7 +14,7 @@ function FormComponent({sup}) {
   
   }
   useEffect(()=>{
-    if(auth === true || localStorage.getItem('token')){
+    if(localStorage.getItem('token')){
       navigate('/')
     }
   },[auth])

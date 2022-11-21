@@ -1,11 +1,14 @@
-import axios from "axios";
+import axiosInstance from "./AxioInstance";
 
+export function requestCountOfIssues() {
+  return axiosInstance.get("issue_page_info")
+}
 export function requestGetIssues() {
-  return axios.get("http://localhost:3001/issues")
+  return axiosInstance.get("issues")
 }
 export function requestOpenIssues() {
-  return axios.get("http://localhost:3001/open_issues")
+  return axiosInstance.get("open_issues?_page=1&_limit=5")
 }
 export function requestClosedIssues() {
-  return axios.get("http://localhost:3001/closed_issues")
+  return axiosInstance.get("closed_issues")
 }

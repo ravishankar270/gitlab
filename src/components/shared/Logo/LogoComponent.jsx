@@ -1,5 +1,5 @@
 import React from 'react'
-import './LogoComponent.css'
+import './LogoComponent.scss'
 function LogoComponent() {
   return (
     <div >

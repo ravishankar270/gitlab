@@ -1,19 +1,9 @@
-import { Navigate, useNavigate } from "react-router-dom";
-import { useJwt } from "react-jwt";
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
-const Protected = ({ auth,tok, children }) => {
-  const { decodedToken, isExpired } = useJwt(tok);
-  const navigate=useNavigate()
-  useEffect(()=>{
-    if(isExpired){
-      navigate('/login')
-    }
-  },[])
+const Protected = ({tok, children }) => {
   if (!tok) {
-    return <Navigate to='/login' replace />;
+    return <Navigate to="/login" replace />;
   }
   return children;
 };
 export default Protected;
-

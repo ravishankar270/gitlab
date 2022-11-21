@@ -24,7 +24,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/actions/authAction';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import {useCookies} from 'react-cookie'
 
 const drawerWidth = 240;
@@ -100,7 +100,7 @@ export default function HeaderComponent({children}) {
   const [open, setOpen] = React.useState(false);
   const [userImg,setUserImg]=React.useState(localStorage.getItem('img'))
   const dispatch=useDispatch()
-  const naviagte=useNavigate()
+  const navigate=useNavigate()
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -117,7 +117,7 @@ export default function HeaderComponent({children}) {
     localStorage.clear()
     dispatch(logout())
     removeCookie('token')
-    naviagte('/login')
+    navigate('/login')
 
   };
   const handleCloseUserMenu=()=>{
@@ -202,6 +202,7 @@ export default function HeaderComponent({children}) {
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
                   }}
+                  onClick={()=>navigate('/')}
                 >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>

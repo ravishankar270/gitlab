@@ -1,28 +1,42 @@
-import { GET_ISSUES, SET_ISSUES, SET_OPEN_ISSUES,SET_CLOSED_ISSUES } from "../../redux/types/issue.types.constant";
+import {
+  SET_ISSUES,
+  SET_OPEN_ISSUES,
+  SET_CLOSED_ISSUES,
+  SET_ISSUES_INFO,
+} from "../../redux/types/issue.types.constant";
 
-const initialState={
-    issues:[],
-    noOfIssues:0
-}
+const initialState = {
+  issues: [],
+  noOfOpenIssues: 0,
+  noOfCloseIssues: 0,
+  noOfAllIssues: 0,
+};
 
-export const issueReducer=(state=initialState,action)=>{
-    switch(action.type){
-        case SET_ISSUES:
-            return{
-                ...state,
-                issues:action.payload
-            }
-        case SET_OPEN_ISSUES:
-            return{
-                ...state,
-                issues:action.payload
-            }
-        case SET_CLOSED_ISSUES:
-            return{
-                ...state,
-                issues:action.payload
-            }
-        default:
-            return state
-    }
-}
+export const issueReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_ISSUES_INFO:
+      return {
+        ...state,
+        noOfOpenIssues: action.payload.openedIssues.count,
+        noOfCloseIssues:action.payload.closedIssues.count,
+        noOfAllIssues:action.payload.allIssues.count
+      };
+    case SET_ISSUES:
+      return {
+        ...state,
+        issues: action.payload,
+      };
+    case SET_OPEN_ISSUES:
+      return {
+        ...state,
+        issues: action.payload,
+      };
+    case SET_CLOSED_ISSUES:
+      return {
+        ...state,
+        issues: action.payload,
+      };
+    default:
+      return state;
+  }
+};
