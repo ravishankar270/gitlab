@@ -37,12 +37,12 @@ export default function IssueComponent({
           <h5>{title}</h5>
         </div>
         <div className="d-flex justify-content-between align-items-start">
-          <p>icon</p>
+        <img src="https://img.icons8.com/fluency-systems-regular/18/null/opened-folder.png" />
           <p className="text-muted">
             #1310 - created {calculate(createdat)} day ago by {author}
           </p>
-          <div className="d-flex justify-content-center align-items-start">
-          <img  width='15px' height='15px' src="https://img.icons8.com/material-outlined/15/null/weight.png"/>
+          <div className="d-flex justify-content-center align-items-start mt-1">
+          <img   width='15px' height='15px' src="https://img.icons8.com/material-outlined/15/null/weight.png"/>
           <p className="text-muted" style={{fontSize:'12px'}}>{weight}</p>
           </div>
           {labels.map((label) => {

@@ -16,7 +16,7 @@ import {
 //handler for accessing the all issues
 export function* getIssues(action) {
   try {
-    const response = yield call(requestGetIssues);
+    const response = yield call(()=>requestGetIssues(action.payload));
     const { data } = response;
     yield put(setIssues(data));
   } catch (error) {
@@ -36,7 +36,7 @@ export function* getCountOfIssues(action) {
 //handler for accessing the open issues
 export function* getOpenIssues(action) {
   try {
-    const response = yield call(()=>requestOpenIssues());
+    const response = yield call(()=>requestOpenIssues(action.payload));
     const { data } = response;
     
     yield put(setOpenIssues(data));
@@ -47,7 +47,7 @@ export function* getOpenIssues(action) {
 //handler for accessing the closed issues
 export function* getClosedIssues(action) {
   try {
-    const response = yield call(requestClosedIssues);
+    const response = yield call(()=>requestClosedIssues(action.payload));
     const { data } = response;
     yield put(setClosedIssues(data));
   } catch (error) {

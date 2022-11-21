@@ -22,9 +22,10 @@ export const setIssuesInfo = (data) => {
     };
   };
 
-export const getIssues = () => {
+export const getIssues = (data) => {
   return {
     type: GET_ISSUES,
+    payload:data
   };
 };
 export const setIssues = (data) => {
@@ -33,14 +34,16 @@ export const setIssues = (data) => {
     payload: data,
   };
 };
-export const getOpenIssues = () => {
+export const getOpenIssues = (data) => {
   return {
     type: GET_OPEN_ISSUES,
+    payload:data
   };
 };
-export const getClosedIssues = () => {
+export const getClosedIssues = (data) => {
   return {
     type: GET_CLOSED_ISSUES,
+    payload:data
   };
 };
 export const setOpenIssues = (data) => {

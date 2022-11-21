@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { Editor, EditorState } from "draft-js";
+import { useParams } from "react-router-dom";
 import "draft-js/dist/Draft.css";
 import LogoComponent from "../../components/shared/Logo/LogoComponent";
 import AvatarComponent from "../../components/Avatar/AvatarComponent";
 import LabelComponent from "../../components/shared/Labels/LabelComponent";
-
-function IssueDetail({ auth }) {
+import './IssueDetail.css'
+function IssueDetail() {
   const issues = useSelector((state) => state.issues.issues);
   const { id } = useParams();
 
@@ -24,7 +23,7 @@ function IssueDetail({ auth }) {
     <div className="d-flex ">
       <div style={{width:'80%'}}>
       <div >
-        <h5>Content to be filled</h5>
+        <p>issues &gt; #1310</p> 
         <hr />
         <div className="d-flex justify-content-between align-items-center">
           <div
@@ -32,7 +31,7 @@ function IssueDetail({ auth }) {
             style={{ width: "50%" }}
           >
             <div
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center details"
               style={{
                 backgroundColor: "#b3ffc7",
                 padding: "5px",

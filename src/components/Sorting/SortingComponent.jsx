@@ -5,24 +5,26 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from 'react';
 
-export default function SortingComponent({issuesData,setIssuesData,updateIssues}) {
+export default function SortingComponent({issuesData,updateIssues}) {
   const [date, setDate] = React.useState('');
   const [order,setOrder]=useState('asc')
 
   const handleChange = (event) => {
     const val=event.target.value
     let sortedArr;
+    const data=[...issuesData]
     if(order==='asc'){
-    sortedArr=issuesData.sort(
+    sortedArr=data.sort(
       (objA, objB) => Number(new Date(objA[val])) - Number(new Date(objB[val])),
     );
     }else{
-      sortedArr=issuesData.sort(
+      sortedArr=data.sort(
         (objA, objB) => Number(new Date(objB[val])) - Number(new Date(objA[val])),
       );
 
     }
     // setIssuesData(sortedArr)
+    // console.log(sortedArr)
     updateIssues(sortedArr)
     setDate(event.target.value);
   };

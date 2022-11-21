@@ -1,5 +1,5 @@
 import "./App.css";
-import "./index.css";
+// import "./index.css";
 import {
   BrowserRouter as Router,
   Routes,

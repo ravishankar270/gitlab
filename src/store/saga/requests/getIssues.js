@@ -3,12 +3,12 @@ import axiosInstance from "./AxioInstance";
 export function requestCountOfIssues() {
   return axiosInstance.get("issue_page_info")
 }
-export function requestGetIssues() {
-  return axiosInstance.get("issues")
+export function requestGetIssues(data) {
+  return axiosInstance.get(`issues?_page=${data.page}&_limit=${data.limit}`)
 }
-export function requestOpenIssues() {
-  return axiosInstance.get("open_issues?_page=1&_limit=5")
+export function requestOpenIssues(data) {
+  return axiosInstance.get(`open_issues?_page=${data.page}&_limit=${data.limit}`)
 }
-export function requestClosedIssues() {
-  return axiosInstance.get("closed_issues")
+export function requestClosedIssues(data) {
+  return axiosInstance.get(`closed_issues?_page=${data.page}&_limit=${data.limit}`)
 }

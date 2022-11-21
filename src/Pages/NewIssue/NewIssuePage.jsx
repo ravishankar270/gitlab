@@ -7,7 +7,7 @@ function NewIssuePage() {
   const navigate=useNavigate()
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center">
+      <div style={{width:'50%'}} className="d-flex justify-content-between align-items-center mx-auto">
         <div>
           <DropDownComponent name={"assignees"} />
           <DropDownComponent name={"Epic"} />

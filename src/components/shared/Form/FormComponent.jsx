@@ -6,6 +6,7 @@ import { login } from '../../../store/actions/authAction'
 import {useCookies} from 'react-cookie'
 function FormComponent({sup}) {
   const auth=useSelector(state=>state.auth)
+  const [disabled,setDisabled]=useState(true)
   const dispatch=useDispatch()
   const navigate=useNavigate()
   
