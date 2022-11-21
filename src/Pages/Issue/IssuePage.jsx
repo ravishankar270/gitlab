@@ -15,18 +15,23 @@ import SortingComponent from "../../components/Sorting/SortingComponent";
 import { Link } from "react-router-dom";
 
 const IssuePage = (i) => {
+  //counts of issues data
   const data = useSelector((state) => state.issues.issues);
   const open = useSelector((state) => state.issues.noOfOpenIssues);
   const closed = useSelector((state) => state.issues.noOfCloseIssues);
   const all = useSelector((state) => state.issues.noOfAllIssues);
+  //data to display it in the ui
   const [dummy,setDummy]=useState([])
   const [issuesData, setIssuesData] = useState([]);
+
+  //states to maintain pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(5);
   const [isSearching, setIsSearch] = useState(false);
   const [type, setType] = useState("open");
   const [nPages, setnPages] = useState(0);
   const dispatch = useDispatch();
+
 
   const dispatchAction=()=>{
     const data={ page: currentPage, limit: recordsPerPage }
@@ -48,18 +53,22 @@ const IssuePage = (i) => {
     dispatch(getIssuesInfo());
   }, []);
 
+  //initialization of issues data
   useEffect(() => {
     setIssuesData(data);
     setDummy(data)
   }, [data]);
 
+  //initialization for npages based on type(open/closed/all)
   useEffect(() => {
     setnPages(Math.ceil(eval(type) / recordsPerPage));
   }, [type]);
 
+  //function after the filtering
   const updateIssues = (data) => {
     setIssuesData(data);
   };
+
 
   const viewIssues = (type) => {
     const data={ page: currentPage, limit: recordsPerPage }
@@ -74,7 +83,7 @@ const IssuePage = (i) => {
     }
   };
 
-  const helper = (issue, index) => {
+  const issueComponent = (issue, index) => {
     return (
       <IssueComponent
         key={issue.id}
@@ -90,6 +99,7 @@ const IssuePage = (i) => {
     );
   };
 
+  //function that implements search functionality
   const search = (val) => {
     
     if (val === "") {
@@ -174,13 +184,13 @@ const IssuePage = (i) => {
       <hr />
       {issuesData.map((issue, index) => {
         if (type === "open" && !issue.state) {
-          return helper(issue, index);
+          return issueComponent(issue, index);
         }
         if (type === "all") {
-          return helper(issue, index);
+          return issueComponent(issue, index);
         }
         if (issue.state === type) {
-          return helper(issue, index);
+          return issueComponent(issue, index);
         }
       })}
       {isSearching?<></>:

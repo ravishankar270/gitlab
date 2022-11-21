@@ -23,12 +23,13 @@ export function* getIssues(action) {
     console.log(error);
   }
 }
+
+//handler for accessing closed issues
 export function* getCountOfIssues(action) {
   try {
     const response = yield call(()=>requestCountOfIssues());
     const { data } = response;
-    console.log(data)
-    yield put(setIssuesInfo(data));
+    yield put(setIssuesInfo(data));//setting the state value of issues count by dispatching an action
   } catch (error) {
     console.log(error);
   }
@@ -38,8 +39,7 @@ export function* getOpenIssues(action) {
   try {
     const response = yield call(()=>requestOpenIssues(action.payload));
     const { data } = response;
-    
-    yield put(setOpenIssues(data));
+    yield put(setOpenIssues(data));//setting the state value to open issues by dispatching an action
   } catch (error) {
     console.log(error);
   }
@@ -49,7 +49,7 @@ export function* getClosedIssues(action) {
   try {
     const response = yield call(()=>requestClosedIssues(action.payload));
     const { data } = response;
-    yield put(setClosedIssues(data));
+    yield put(setClosedIssues(data));//setting the state value to closed issues by dispatching an action 
   } catch (error) {
     console.log(error);
   }

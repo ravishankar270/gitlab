@@ -10,22 +10,22 @@ import {
 } from "../../redux/types/issue.types.constant";
 
 export const getIssuesInfo = () => {
-    return {
-      type: GET_ISSUES_INFO,
-    };
+  return {
+    type: GET_ISSUES_INFO,
   };
+};
 
 export const setIssuesInfo = (data) => {
-    return {
-      type: SET_ISSUES_INFO,
-      payload:data
-    };
+  return {
+    type: SET_ISSUES_INFO,
+    payload: data,
   };
+};
 
 export const getIssues = (data) => {
   return {
     type: GET_ISSUES,
-    payload:data
+    payload: data,
   };
 };
 export const setIssues = (data) => {
@@ -37,13 +37,13 @@ export const setIssues = (data) => {
 export const getOpenIssues = (data) => {
   return {
     type: GET_OPEN_ISSUES,
-    payload:data
+    payload: data,
   };
 };
 export const getClosedIssues = (data) => {
   return {
     type: GET_CLOSED_ISSUES,
-    payload:data
+    payload: data,
   };
 };
 export const setOpenIssues = (data) => {

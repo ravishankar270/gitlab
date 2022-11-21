@@ -1,5 +1,6 @@
 import axiosInstance from "./AxioInstance";
 
+//different api calls to db json server
 export function requestCountOfIssues() {
   return axiosInstance.get("issue_page_info")
 }
