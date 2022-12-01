@@ -17,15 +17,28 @@
 	width: 30%;
 	display: flex;
 }
-.ty {
+.type {
 	display: flex;
 	margin-left: 10px;
 }
-#n {
+// #n {
+// 	font-weight: bold;
+// 	font-size: 16px;
+// 	cursor: pointer;
+// }
+.cont {
+	border-bottom: 2px solid blue;
 	font-weight: bold;
 	font-size: 16px;
 	cursor: pointer;
 }
-.cont {
-	border-bottom: 2px solid blue;
+.normal{
+	cursor: pointer;
+}
+
+.searchandsort{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
 }

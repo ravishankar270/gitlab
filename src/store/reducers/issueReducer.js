@@ -1,8 +1,6 @@
 import {
   SET_ISSUES,
-  SET_OPEN_ISSUES,
-  SET_CLOSED_ISSUES,
-  SET_ISSUES_INFO,
+  SET_ISSUES_INFO
 } from "../../redux/types/issue.types.constant";
 
 const initialState = {
@@ -10,6 +8,7 @@ const initialState = {
   noOfOpenIssues: 0,
   noOfCloseIssues: 0,
   noOfAllIssues: 0,
+
 };
 
 export const issueReducer = (state = initialState, action) => {
@@ -19,23 +18,14 @@ export const issueReducer = (state = initialState, action) => {
         ...state,
         noOfOpenIssues: action.payload.openedIssues.count,
         noOfCloseIssues:action.payload.closedIssues.count,
-        noOfAllIssues:action.payload.allIssues.count
+        noOfAllIssues:action.payload.allIssues.count,
       };
     case SET_ISSUES:
       return {
         ...state,
         issues: action.payload,
       };
-    case SET_OPEN_ISSUES:
-      return {
-        ...state,
-        issues: action.payload,
-      };
-    case SET_CLOSED_ISSUES:
-      return {
-        ...state,
-        issues: action.payload,
-      };
+   
     default:
       return state;
   }

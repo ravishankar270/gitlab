@@ -11,6 +11,7 @@ import {
   requestCountOfIssues,
   requestGetIssues,
   requestOpenIssues,
+  requestSortedIssues,
 } from "../requests/getIssues";
 
 //handler for accessing the all issues
@@ -39,7 +40,7 @@ export function* getOpenIssues(action) {
   try {
     const response = yield call(()=>requestOpenIssues(action.payload));
     const { data } = response;
-    yield put(setOpenIssues(data));//setting the state value to open issues by dispatching an action
+    yield put(setIssues(data));//setting the state value to open issues by dispatching an action
   } catch (error) {
     console.log(error);
   }
@@ -49,7 +50,18 @@ export function* getClosedIssues(action) {
   try {
     const response = yield call(()=>requestClosedIssues(action.payload));
     const { data } = response;
-    yield put(setClosedIssues(data));//setting the state value to closed issues by dispatching an action 
+    yield put(setIssues(data));//setting the state value to closed issues by dispatching an action 
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* getSortedData(action) {
+  try {
+    const response = yield call(()=>requestSortedIssues(action.payload));
+    const { data } = response;
+    console.log(data)
+    yield put(setIssues(data));//setting the state value to closed issues by dispatching an action 
   } catch (error) {
     console.log(error);
   }

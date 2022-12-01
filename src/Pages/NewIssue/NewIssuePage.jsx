@@ -2,22 +2,23 @@ import { TextField } from "@material-ui/core";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import DropDownComponent from "../../components/DropDown/DropDownComponent";
+import './NewIssuePage.scss'
 
 function NewIssuePage() {
   const navigate=useNavigate()
   return (
     <>
-      <div style={{width:'50%'}} className="d-flex justify-content-between align-items-center mx-auto">
+      <div  className="newissue">
         <div>
           <DropDownComponent name={"assignees"} />
           <DropDownComponent name={"Epic"} />
           <DropDownComponent name={"Labels"} />
           <div className="d-flex justify-content-between">
             <button className="btn btn-primary">Create Issue</button>
-            <button className="btn btn-secondary" onClick={()=>navigate('/')}>Close Issue</button>
+            <button className="btn btn-secondary" onClick={()=>navigate('/')}>Close</button>
           </div>
         </div>
-        <div className="d-flex flex-column justify-content-center">
+        <div className="fields">
           <TextField
             id="outlined-weight-input"
             label="weight"

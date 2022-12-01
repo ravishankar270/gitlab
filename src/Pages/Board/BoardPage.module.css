@@ -1,0 +1,21 @@
+.holder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+button{
+    margin: 5px;
+}
+.box{
+    border: 1px solid black;
+    margin: 2px;
+}

@@ -3,11 +3,12 @@ import {
   GET_ISSUES,
   GET_ISSUES_INFO,
   GET_OPEN_ISSUES,
-  SET_CLOSED_ISSUES,
+  GET_SORTED_DATA,
   SET_ISSUES,
   SET_ISSUES_INFO,
   SET_OPEN_ISSUES,
 } from "../../redux/types/issue.types.constant";
+
 
 export const getIssuesInfo = () => {
   return {
@@ -46,15 +47,11 @@ export const getClosedIssues = (data) => {
     payload: data,
   };
 };
-export const setOpenIssues = (data) => {
+export const getSortedData = (data) => {
   return {
-    type: SET_OPEN_ISSUES,
-    payload: data,
+    type: GET_SORTED_DATA,
+    payload:data,
   };
 };
-export const setClosedIssues = (data) => {
-  return {
-    type: SET_CLOSED_ISSUES,
-    payload: data,
-  };
-};
+
+

@@ -6,7 +6,10 @@ import LogoComponent from "../../components/shared/Logo/LogoComponent";
 import AvatarComponent from "../../components/Avatar/AvatarComponent";
 import LabelComponent from "../../components/shared/Labels/LabelComponent";
 import './IssueDetail.css'
+
+
 function IssueDetail() {
+  
   const issues = useSelector((state) => state.issues.issues);
   const { id } = useParams();
 

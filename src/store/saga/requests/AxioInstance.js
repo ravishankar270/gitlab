@@ -8,6 +8,9 @@ const axioInstance = axios.create({
 axioInstance.interceptors.request.use((config) => {
   if (localStorage.getItem("currenttime")) {
     // checking if the session has expired(time limit 20 minutes)
+    if(!localStorage.getItem('token')){
+      window.location.href = "/login";
+    }
     if (
       new Date(
         new Date().getTime() - new Date(localStorage.getItem("currenttime"))

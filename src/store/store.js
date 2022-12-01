@@ -6,7 +6,8 @@ import { issueReducer } from './reducers/issueReducer';
 
 const reducer=combineReducers({
     auth:authReducer,
-    issues:issueReducer
+    issues:issueReducer,
+    // common:commonReducer
 })
 
 const sagaMiddleware = createSagaMiddleware();

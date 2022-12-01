@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import Protected from "./Utilities/Protected";
 import IssueDetail from "./Pages/IssueDetail/IssueDetail";
 import NewIssuePage from "./Pages/NewIssue/NewIssuePage";
+import BoardPage from "./Pages/Board/BoardPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -33,7 +34,7 @@ function App() {
             }
           ></Route>
           <Route exact path="/login" element={<LoginPage />}></Route>
-          <Route exact path="/issue" element={<IssuePage />}></Route>
+          {/* <Route exact path="/issue" element={<IssuePage />}></Route> */}
           <Route
             exact
             path="/issueDetails/:id"
@@ -56,6 +57,7 @@ function App() {
               </Protected>
             }
           ></Route>
+          <Route path='/board' element={<BoardPage/>}></Route>
         </Routes>
       </div>
     </Router>

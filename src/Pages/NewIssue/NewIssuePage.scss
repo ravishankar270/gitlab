@@ -1,0 +1,13 @@
+.newissue{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 50%;
+}
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

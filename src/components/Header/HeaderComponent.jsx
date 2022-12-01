@@ -25,7 +25,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/actions/authAction';
 import {useNavigate } from 'react-router-dom';
-import {useCookies} from 'react-cookie'
+// import {useCookies} from 'react-cookie'
 
 const drawerWidth = 240;
 const openedMixin = (theme) => ({
@@ -95,7 +95,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function HeaderComponent({children}) {
   const theme = useTheme();
-  const [cookies,setCookies,removeCookie]=useCookies(['token'])
+  // const [cookies,setCookies,removeCookie]=useCookies(['token'])
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const [userImg,setUserImg]=React.useState(localStorage.getItem('img'))
@@ -116,7 +116,7 @@ export default function HeaderComponent({children}) {
   const handleCloseUserMenu1 = () => {
     localStorage.clear()
     dispatch(logout())
-    removeCookie('token')
+    // removeCookie('token')
     navigate('/login')
 
   };
